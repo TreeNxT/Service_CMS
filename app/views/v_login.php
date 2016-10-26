@@ -14,5 +14,6 @@
     <body>
         <h1>Logowanie</h1>
         <p>Akapit</p>
+        <p>Akapit2</p>
     </body>
 </html>
