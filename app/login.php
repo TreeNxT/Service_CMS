@@ -23,7 +23,6 @@ if(isset($_POST['submit'])){
         $_SESSION['username'] = $Template->getData('input_user');
         $_SESSION['logged'] = TRUE;
         $Template->setAlert('Witaj ' . $Template->getData('input_user'), 'success');
-        $Template->redirect('users.php');
     }
 } else {
     $Template->load('views/v_login.php');

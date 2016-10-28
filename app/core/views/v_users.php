@@ -15,12 +15,15 @@
     <body>
         <h1>Zalogowano</h1>
         <?php
-        /*if ($Auth->checkRights() == TRUE){
-            echo 'Jestes adminem';
-        } else {
-            echo 'Nie jestes adminem';
+        $alerts = $this->getAlerts();
+        if ($alerts != ''){
+            echo '<ul class="alerts">' . $alerts . '</ul>';
         }
-        */?>
+
+        ?>
+
+        <a href="logout.php">Wyloguj</a>
+
     </body>
 </html>
 
