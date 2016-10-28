@@ -9,6 +9,7 @@
 class Template {
 
     private $data;
+    private $alertsTypes;
 
     function __construct()
     {
@@ -16,6 +17,35 @@ class Template {
 
     function load($url){
         include($url);
+    }
+    function redirect($url){
+        header("Location: $url");
+    }
+
+    function setAlertTypes($types){
+        $this->setAlertTypes = $types;
+    }
+
+    function setAlert($type = null, $value){
+        if ($type == ''){
+            $this->alertsTypes[0];
+        }
+        $_SESSION[$type][] = $value;
+    }
+
+    function getAlerts(){
+        $data = '';
+
+        foreach ($this->setAlertTypes as $alert) {
+            if (isset($_SESSION[$alert])) {
+                foreach ($_SESSION[$alert] as $value) {
+                    $data .= '<li class="' . $alert . '">' . $value . '</li>';
+                }
+                unset($_SESSION[$alert]);
+            }
+        }
+
+        return $data;
     }
 
     function setData($name, $val){
