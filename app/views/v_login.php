@@ -7,7 +7,7 @@
 
 <html>
     <head>
-        <title>Serwis CMS</title>
+        <title><?php echo $this->getData("ap_name"); ?></title>
         <meta charset="utf-8" />
         <link rel="stylesheet" type="text/css" href="views/style.css"/>
     </head>

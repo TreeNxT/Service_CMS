@@ -8,6 +8,8 @@
 
 class Template {
 
+    private $data;
+
     function __construct()
     {
     }
@@ -16,4 +18,15 @@ class Template {
         include($url);
     }
 
+    function setData($name, $val){
+        $this->data[$name] = htmlentities($val, HTML_ENTITIES);
+    }
+
+    function getData($name){
+        if(isset($this->data[$name])){
+            return $this->data[$name];
+        } else {
+            return '';
+        }
+    }
 }
