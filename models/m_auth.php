@@ -17,13 +17,17 @@ class Auth{
         global $Database;
 
         if($stmt = $Database->prepare("SELECT * FROM users WHERE username = ? AND password = ?")) {
-            $stmt->bind_param("ss", $user, md5($pass . $this->salt));
+            $md5pass = md5($pass . $this->salt);
+            $stmt->bind_param("ss", $user, $md5pass);
             $stmt->execute();
             $stmt->store_result();
 
             if ($stmt->num_rows > 0) {
+                //if ($stmt['admin'] == 1 )
+                    //$_SESSION['admin'] = TRUE;
                 $stmt->close();
                 return TRUE;
+
             } else {
                 $stmt->close();
                 return FALSE;
@@ -31,11 +35,25 @@ class Auth{
         } else{
             die();
         }
+
+
     }
 
     function checkLoginStatus(){
-        if(isset($_SESSION['loggedin'])){
+        if(isset($_SESSION['logged'])){
             return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
+    function checkRights(){
+        if(isset($_SESSION['admin'])){
+            if ($_SESSION['admin'] == TRUE){
+                return TRUE;
+            } else {
+                return FALSE;
+            }
         } else {
             return FALSE;
         }

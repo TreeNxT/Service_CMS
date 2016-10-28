@@ -26,7 +26,7 @@ class Template {
         $this->setAlertTypes = $types;
     }
 
-    function setAlert($type = null, $value){
+    function setAlert($value, $type = null){
         if ($type == ''){
             $this->alertsTypes[0];
         }
