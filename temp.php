@@ -6,6 +6,6 @@
  * Time: 15:37
  */
 
-$pass = md5('admin' . 'admin');
+$pass = md5('admin' . 'h1F6b9xG');
 
 echo $pass;

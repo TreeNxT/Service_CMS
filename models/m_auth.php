@@ -7,7 +7,7 @@
  */
 
 class Auth{
-    private $salt = 'admin';
+    private $salt = 'h1F6b9xG';
 
     function __construct()
     {
